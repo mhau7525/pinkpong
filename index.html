@@ -1,4 +1,39 @@
-<html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Show Content from Google Sites</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        #content {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Nội dung từ Google Sites</h1>
+    <div id="content">Loading...</div>
 
-  Hello world
+    <script>
+        // URL của trang Google Sites mà bạn muốn lấy nội dung
+        const url = 'https://sites.google.com/view/watchfreetimezz/gi%E1%BB%9Bi-thi%E1%BB%87u';
+
+        // Hàm để lấy nội dung
+        async function fetchContent() {
+            try {
+                const response = await fetch(url);
+                const text = await response.text();
+                document.getElementById('content').innerHTML = text;
+            } catch (error) {
+                document.getElementById('content').innerHTML = 'Không thể lấy nội dung!';
+                console.error('Error fetching content:', error);
+            }
+        }
+
+        fetchContent();
+    </script>
+</body>
 </html>
